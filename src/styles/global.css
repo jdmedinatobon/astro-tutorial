@@ -22,12 +22,25 @@ h1 {
 
 /* nav styles */
 
+.hamburger {
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin-bottom: 10px;
+    background-color: #ff9776;
+}
+
 .nav-links {
     width: 100%;
     top: 5rem;
     left: 48px;
-    /* background-color: #ff9776; */
-    display: flex;
+    background-color: #ff9776;
+    display: none;
     flex-direction: column;
     margin: 0;
 }
@@ -48,13 +61,13 @@ h1 {
 }
 
 .expanded {
-    display: unset;
+    display: flex;
 }
 
 @media screen and (min-width: 636px) {
     .nav-links {
         margin-left: 5em;
-        /* display: flex; */
+        display: flex;
         flex-direction: row;
         /* position: static; */
         width: auto;
@@ -64,5 +77,9 @@ h1 {
     .nav-links a {
         display: inline-block;
         padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: none;
     }
 }
