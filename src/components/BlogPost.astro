@@ -1,4 +1,15 @@
 ---
-const {url, title} = Astro.props;
+import {Image} from 'astro:assets';
+
+const {url, title, description, imgsrc} = Astro.props;
 ---
-<li><a href={url}>{title}</a></li>
+<div class="post-container">
+    <Image
+        src={imgsrc}
+        alt="Image of a printed circuit board"/>
+    <div class="post-card">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <a href={url}>Check it out!</a>
+    </div>
+<div>

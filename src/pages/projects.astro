@@ -5,7 +5,13 @@ import Footer from '../components/Footer.astro';
 import BlogPost from '../components/BlogPost.astro';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import type { ImageMetadata } from 'astro';
+// import WeatherStationBoard from '../assets/WeatherStationBoard.png';
+// import BuoyOperating from '../assets/BuoyOperating.jpeg';
+
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true}));
+const images = import.meta.glob<{default: ImageMetadata }>('../assets/*.{jpeg,jpg,png,gif}')
 const pageTitle = "My Astro Learning Blog"
 ---
 
@@ -25,12 +31,17 @@ const pageTitle = "My Astro Learning Blog"
 	<body>
 		<BaseLayout pageTitle={pageTitle}>
 			<p>This is where I will post about my journey learning Astro.</p>
-			<ul>
+			<div class="posts-container">
 				<!-- <li><a href="/posts/post-1">Post 1</a></li>
 				<li><a href="/posts/post-2">Post 2</a></li>
 				<li><a href="/posts/post-3">Post 3</a></li> -->
-				{allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
-			</ul>
+				{allPosts.map((post: any) => 
+					<BlogPost 
+						url={post.url}
+						title={post.frontmatter.title}
+						description={post.frontmatter.description}
+						imgsrc={images[post.frontmatter.image.url]()}/>)}
+			</div>
 		</BaseLayout>
 	</body>
 </html>

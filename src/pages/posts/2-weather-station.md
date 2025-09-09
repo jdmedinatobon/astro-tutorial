@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'My First Blog Post'
+title: 'Agriculture Weather Station'
 pubDate: 2022-07-01
-description: 'This is the fist post of my new Astro blog.'
+description: 'Agriculture weather station here.'
 author: 'Juan David Medina Tobon'
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
+    url: '../assets/BuoyOperating.jpeg'
+    alt: 'A printed circuit board 3D render for the top layer'
 tags: ["astro", "blogging", "learning in public"]
 ---
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.

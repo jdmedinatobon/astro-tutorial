@@ -1,11 +1,11 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: My Second Blog Post
+title: Fish Farming Buoy
 author: Juan David Medina Tobon
-description: "After learning some Astro, I couldn't stop!"
+description: "Fish Farming description here"
 image:
-    url: "https://docs.astro.build/assets/arc.webp"
-    alt: "The Astro logo on a dark background with a purple gradient arc."
+    url: "../assets/BuoyOperating.jpeg"
+    alt: "text here"
 pubDate: 2022-07-08
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
