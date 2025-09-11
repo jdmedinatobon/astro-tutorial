@@ -10,7 +10,7 @@ import type { ImageMetadata } from 'astro';
 // import WeatherStationBoard from '../assets/WeatherStationBoard.png';
 // import BuoyOperating from '../assets/BuoyOperating.jpeg';
 
-const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true}));
+const allPosts = Object.values(import.meta.glob('./posts/*.mdx', { eager: true}));
 const images = import.meta.glob<{default: ImageMetadata }>('../assets/*.{jpeg,jpg,png,gif}')
 const pageTitle = "Projects"
 ---
