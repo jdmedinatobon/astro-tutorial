@@ -108,15 +108,19 @@ h3 {
     /* text-align: center; */
 }
 
-.blog-container img {
+.blog-container > img {
     width: 100%;
     max-width: 500px;
     height: auto;
-    align-self: center;
+    /* align-self: center; */
 }
 
 .blog-container p {
     font-size: 14pt;
+}
+
+.blog-post-img-wide {
+    max-width: 100% !important;
 }
 
 @media screen and (min-width: 636px) {
