@@ -6,7 +6,7 @@ html {
 body {
     margin: 0 auto;
     width: 100%;
-    max-width: 80ch;
+    max-width: 1080px;
     padding: 1rem;
     line-height: 1.5;
 }
@@ -87,6 +87,7 @@ h1 {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    width: 400px;
 }
 
 h3 {
@@ -94,10 +95,28 @@ h3 {
     margin-bottom: 0px;
 }
 
-img {
+.post-container > img {
     height: auto;
     width: 100%;
     object-fit: cover;
+}
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    /* text-align: center; */
+}
+
+.blog-container img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    align-self: center;
+}
+
+.blog-container p {
+    font-size: 14pt;
 }
 
 @media screen and (min-width: 636px) {
@@ -124,9 +143,8 @@ img {
     .hamburger {
         display: none;
     }
-
-    img {
-        width: 100%;
-        height: auto;
+    
+    .post-container > img {
+        width: auto;
     }
 }

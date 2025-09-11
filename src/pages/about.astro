@@ -16,9 +16,6 @@ const identity = {
 };
 
 const skills = ["HTML", "CSS", "JavaScript", "C", "Hardware Design"];
-const happy = false;
-const finished = false;
-const goal = 3;
 
 const skillColor = "navy";
 const fontWeight = "bold";
@@ -46,26 +43,16 @@ const textCase = "none";
 	</head>
 	<body>
 		<BaseLayout pageTitle={pageTitle}>
-			<h2>Hi!</h2>
-
-			<p>I am an electrical engineer.</p>
+			<p>I am currently an electrical engineer working on software and hardware design of IoT devices.
+				I have experience using Altium for PCB design 
+			</p>
 
 			<p>You can check out my projects on the projects tab or by clicking <a href="/">here</a>.</p>
-			<p>Here are a few facts about me:</p>
-			<ul>
-				<li>My name is {identity.firstName} {identity.lastName}.</li>
-				<li>I live in {identity.country} and I work as a {identity.occupation}</li>
-				{identity.hobbies.length >= 2 &&
-					<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-				}
 			</ul>
 			<p>My skills are:</p>
 			<ul>
 				{skills.map((skill) => <li class="skill">{skill}</li>)}
 			</ul>
-			{happy && <p>I am happy to be learning Astro!</p>}
-			{finished && <p>I finished this tutorial!</p>}
-			{goal == 3 ? <p>My goal is to finish in 1 day.</p> : <p>My goal is not 1 day.</p>}
 		</BaseLayout>
 	</body>
 </html>
