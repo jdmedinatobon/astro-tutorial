@@ -2,11 +2,11 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Fish Farming Buoy
 author: Juan David Medina Tobon
-description: "Fish Farming description here"
+description: "Developed a prototype battery-powered device using LoRaWAN to transmit water temperature, dissolved oxygen and pH for fish farming applications in Colombia. Project was distributed as open-source hardware and a peer-reviewed article was published."
 image:
     url: "../assets/BuoyOperating.jpeg"
-    alt: "text here"
-pubDate: 2022-07-08
+    alt: "A prototype buoy device for measuring water quality at fish farming lakes"
+pubDate: 2025-09-12
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
 import { Image } from 'astro:assets';
@@ -76,13 +76,15 @@ The following image shows a simplified view of the buoy:
 
 - In order to power the device for long periods of time using locally-sourced batteries, the device was programmed to enter a low-power mode during measurements. A low quiescent current regulator was selected to minimize the power consumption during low periods.
 
-The power consumption during each device state through the entire on-off cycle was measured using an oscilloscope and a small resistor. The results are shown in the following image.
+{/* The power consumption during each device state through the entire on-off cycle was measured using an oscilloscope and a small resistor. The results are shown in the following image.
 
 <Image
     class="blog-post-img-wide"
     src={PowerProfile}
     alt="A graph showing the device's power consumption during each state of the cycle"
-/>
+/> */}
+
+The developed device was tested in real-world conditions at an operating fish farm close to Neiva, Huila. This process involved visiting the farm and installing the prototype at one of the lakes selected with the administrator. Shown below is a picture of the device in operation at the lake.
 
 <Image
     class="blog-post-img-wide"
@@ -90,10 +92,14 @@ The power consumption during each device state through the entire on-off cycle w
     alt="The prototype buoy water quality device installed in the field"
 />
 
-The data gathered during the field test for dissolved oxygen is shown below.
+Data was gathered for a few days. Below, two days worth of data taken every 10 minutes can be observed for dissolved oxygen. Here, one can see the potential of the solution. Taking a minimum threshold of 5 mg/L, recorded dissolved oxygen values reached values close to 3 mg/L which can negatively affect fish or even lead to death.
 
 <Image
     class="blog-post-img-wide"
     src={dodata}
     alt="A graph showing the dissolved oxygen data gathered during the field test of the device"
 />
+
+### Lessons learned
+- I learned a lot about product design. In this case, the interest was to build a device that could be useful to fish farmers, while also proving financially viable.
+- There were difficulties at the time due to the COVID pandemic. For this reason, I had to work mostly with locally sourced components.
