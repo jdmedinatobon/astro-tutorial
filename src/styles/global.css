@@ -129,6 +129,9 @@ h3 {
     font-size: 14pt;
 }
 
+.blog-post-img-narrow {
+    max-width: 400px !important;
+}
 .blog-post-img-wide {
     max-width: 100% !important;
 }

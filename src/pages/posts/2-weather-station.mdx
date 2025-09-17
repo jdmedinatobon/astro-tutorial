@@ -9,11 +9,107 @@ image:
     alt: 'A prototype weather station device for agriculture applications'
 tags: ["astro", "blogging", "learning in public"]
 ---
+import {Image} from 'astro:assets';
+import pcbview from '../../assets/weather/pcbview.png';
+import kit from '../../assets/weather/kit.jpg';
+import electronics from '../../assets/weather/electronics.jpg';
+import view from '../../assets/weather/view.jpg';
+import CropvizDiagram from '../../assets/weather/CropvizDiagram.png';
+import circuitboard from '../../assets/weather/circuitboard.jpg';
+import ETcEP from '../../assets/weather/ETcEP.png';
 
 ### Overview
 
+<Image
+    class="blog-post-img-narrow"
+    src={view}
+    alt="3D view of a prototype board for a weather station"
+/>
+
+The objective of this project was to develop a low-cost weather and soil monitoring solution for agriculture in Colombia.
+We built a solar-powered device that monitored weather and soil variables and transmitted data using novel LEO connectivity. 
+
+ 
+
+Similar to the other post, more details can be consulted in the published article (also open access): [A precision agriculture solution for water stress estimation in Hass avocado farms in Colombia](https://www.nature.com/articles/s41598-024-82344-4).
+
 ### Problem
+We set out to build a solution for small and medium farmers in Colombia. We believed that agriculture solutions are sometimes not built for small and medium farmers. This can mean that solutions are too expensive to offer a benefit to the farmer, or 
+that they do not work correctly at the installation site. Therefore, we first did preliminary work to choose a crop to focus on and conducted interviews to find out the problems faced by farmers.
+
+During this process, we settled on Hass avocado due to its growing exports and potentially higher capability for technological investment. Regarding the issues, we found the following:
+- Extreme weather events, like prolonged droughts or very intense rainfall, could impact the farm greatly
+- High up front costs make acquiring products difficult
+- Little access to electricity
+- Little data for decision-making that is worsened by changing weather patterns
+- Hass avocado crops can suffer from prolonged water stress, which can affect yield
+
+{/* Siento que esto esta muy largo */}
+Importantly, the sensors were selected to estimate the Crop Evapotranspiration. Without going into details, this refers to the water requirement of the crop. These weather variables are used as an input to a standardized method for calculating the Crop Evapotranspiration
+ (known as the Penman-Monteith method). Therefore, the data transmitted from the device can be used to understand how much water is needed by the crop, which is then compared to the accumulated rainfall during a certain period to know if the crop has a water deficit that must be replenished by irrigation. 
+
+On the other hand, a soil moisture sensor is also used. Water is stored in the soil for uptake by the crop roots. As time passes, water is consumed (according to the Crop Evapotranspiration) and is taken from the soil. However, the amount of water available for the crop is limited, and after a certain point
+ it begins to suffer from water stress, where the crop's water uptake is reduced. Then, the soil moisture sensor is useful to understand when the crop requires irrigation if this water stress point is known.
+
+Note that this is a very nuanced topic, and I have simplified the problem here. This all depends on various factors:
+- The type of crop considered and what stage it's in
+- The soil characteristics
+- The farm practices
+- The irrigation method used
+- and more...
+
+More details can be found in the [published article](https://www.nature.com/articles/s41598-024-82344-4).
+
+{/* Hasta aqui. Recortar o reemplazar por un diagrama? */}
 
 ### Development
+The project began by developing a device that measured weather and soil variables with the following requirements:
+- Data would be transmitted automatically
+- Weather and soil information would be used for giving irrigation recommendations and extreme weather events alerts
+- The device would not require electricity
+- The solution would be low-cost to reduce initial investments
+
+A diagram showcasing the first iteration of the solution is shown below.
+
+<Image
+    src={CropvizDiagram}
+    alt="Diagram of the device operation"
+/>
+
+The device is solar-powered using rechargeable batteries. It also integrates a LEO communications module, at the time from Swarm Technologies (now SpaceX), that transmitted small packets of data through a LEO constellation of satellites.
+This has the advantage that there is coverage in rural areas, where cellular or internet connectivity may be limited. The main electronics PCB was designed and assembled by me, and are shown in the image that follows.
+
+<Image
+    src={circuitboard}
+    alt="Assembled circuit board for the main electronics"
+/>
+
+The main PCB integrated the following circuits:
+- Solar charger circuit for recharging the batteries using the solar panel
+- 3.3V regulator for supplying the sensors, LEO module and microcontroller
+- Mini PCI express card connector where the LEO module is connected to the board
+- Connectors for sensors and solar panel
+- Microcontroller and required components, such as a 32.768 KHz crystal
+
+The sensors were also developed internally, with the exception of the soil moisture sensor which was from a third party. Data was transmitted to a web portal where it was processed to estimate the water requirements of the crop.
 
 ### Results
+
+Devices were tested in the field for more than 18+ months, meanwhile undergoing multiple iterations refining the design based on observations in the field.
+The following image shows the results for the water requirements of the crop for a period of 12 months.
+
+<Image
+    src={ETcEP}
+    alt="The prototype device installed in the field showing each sensor"
+/>
+
+Here, the potential of the device can be observed. For months where crop evapotranspiration (ETc) is lower than effective precipitation (EP), irrigation would be required.
+ For other months, no irrigation would be required but potential extreme precipitation weather alerts can be generated to the user.
+
+### Lessons learned
+- Prototype circuit boards were assembled internally by me. I learned a lot about assembling and manufacturing PCBs, where I had to position the components, apply solder paste with a stencil, solder the boards and conduct functionality testing.
+- Connectors were a very important topic. They had to be robust and operate well for months when exposed to the environment.
+
+While I only mentioned LEO connectivity in this post, we also tested other technologies such as LoRaWAN and cellular connectivity through LTE modems.
+    - We also made another main electronics board that transmitted data to a Gateway placed in the farm using LoRaWAN. In the end, we opted to use only the LEO solution, since there were few points of measurement at the farm.
+    - Cellular connectivity was added as an option later on, because the Swarm satellite constellation went offline.
